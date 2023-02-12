@@ -1,4 +1,4 @@
-// subset_sum (부분집합의 합 문제) 
+// subset_sum (부분집합의 합 문제) - backtracking
 #include <iostream>
 #include <vector>
 #include <numeric> // std::accumulate 
