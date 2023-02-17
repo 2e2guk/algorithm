@@ -6,14 +6,14 @@
 using namespace std;
 
 int knapsack_0_1_memo(int i, int W, vector<int>& w, vector<int>& p, vector<vector<int>>& dp) { // 총 물건의 개수 n, 가방의 초대 무게 W, 물건들의 무게를 저장할 w, 물건들의 가치를 저장할 p
-    if (i < 0) 
+    if (i < 0) // 기저 조건
         return 0;
-    if(dp[i][W] != -1) 
+    if(dp[i][W] != -1) // memoization
         return dp[i][W];
     if (w[i] > W) { // 배낭에 item을 담을 수 없는 경우.
         dp[i][W] = knapsack_0_1_memo(i - 1, W, w, p, dp);
         return dp[i][W];
-    } else {
+    } else { // 배낭에 item을 담을 수 있는 경우. item을 담을 순 있지만 담지 않은 경우와, 배낭에 item을 직접 담은 경우 중에서 더 큰 값을 선택한다. 
         dp[i][W] = max(knapsack_0_1_memo(i - 1, W, w, p, dp), p[i] + knapsack_0_1_memo(i - 1, W - w[i], w, p, dp));
         return dp[i][W];
     }
