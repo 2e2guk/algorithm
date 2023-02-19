@@ -1,4 +1,4 @@
-// subset_sum (부분집합의 합 문제) - backtracking
+// subset_sum (부분집합의 합 문제) 
 #include <iostream>
 #include <vector>
 #include <numeric> // std::accumulate 
@@ -30,14 +30,13 @@ void sum_of_subsets(int i, int weight, int total, int W, vector<bool>& is_includ
 int main() {
     int n, total, W;
     int weight = 0;
-    cin >> n;
+    cin >> n >> W;
     vector<bool> is_included(n + 1, false);
     vector<int> w(n + 1, 0);
     for (int k = 1; k <= n; k++) {
         cin >> w[k];
     }
     total = accumulate(w.begin() + 1, w.end(), 0); 
-    cin >> W;
     sort(w.begin(), w.end());
     sum_of_subsets(0, weight, total, W, is_included, w);
     return 0;
