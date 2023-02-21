@@ -7,13 +7,13 @@ using namespace std;
 bool promising(int i, int n, vector<vector<int>>& W, vector<int>& vindex) {
     int j;
     bool flag;
-    if (i == n - 1 && !W[vindex[n - 1]][vindex[0]]) flag = false;
-    else if (i > 0 && !W[vindex[i - 1]][vindex[i]]) flag = false;
+    if (i == n - 1 && !W[vindex[n - 1]][vindex[0]]) flag = false; // 탐색을 종료했지만 시작 정점으로 되돌아갈 수 없는 경우. 
+    else if (i > 0 && !W[vindex[i - 1]][vindex[i]]) flag = false; // i - 1 번째 level에 선택된 정점에서, i 번째 level에 선택할 정점으로 갈 수 없는 경우.
     else {
         flag = true;
         j = 1;
         while (j < i && flag) {
-            if (vindex[i] == vindex[j]) flag = false;
+            if (vindex[i] == vindex[j]) flag = false; // 방문했던 정점을 한번 더 방문하는 경우. 
             j++;
         }
     }
@@ -27,10 +27,10 @@ void hamiltonian(int i, int n, vector<vector<int>>& W, vector<int>& vindex) { //
             for (int k = 0; k < n; k++) {
                 cout << vindex[k] << " ";
             }
-            cout << vindex[0] << " ";
+            cout << vindex[0] << " "; // 마지막에는 시작 정점으로 되돌아가기 위해서 vindex[0] 출력.
             cout << "\n";
         } else {
-            for (j = 2; j <= n; j++) {
+            for (j = 2; j <= n; j++) { // 1을 시작 정점으로 고정한다. 
                 vindex[i + 1] = j;
                 hamiltonian(i + 1, n, W, vindex);
             }
