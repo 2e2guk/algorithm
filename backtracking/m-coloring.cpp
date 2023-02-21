@@ -30,7 +30,7 @@ void m_coloring(int i, int n, int m, vector<vector<int>>& W, vector<int>& vcolor
         } else {
             for (color = 1; color <= m; color++) {
                 vcolor[i + 1] = color;
-                m_coloring(i + 1, n, m, W, vcolor);
+                m_coloring(i + 1, n, m, W, vcolor); // i + 1이 nonpromising 한 경우, backtrack해서 color를 1 증가시킨다. 
             }
         }
     }
