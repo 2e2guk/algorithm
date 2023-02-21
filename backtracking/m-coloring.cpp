@@ -17,12 +17,12 @@ bool promising(int i, vector<vector<int>>& W, vector<int>& vcolor) {
     return flag;
 }
 
-void m_coloring(int i, int n, int m, vector<vector<int>>& W, vector<int>& vcolor) {
+void m_coloring(int i, int n, int m, vector<vector<int>>& W, vector<int>& vcolor) { // i = 현재 SST에서의 level.
 
     int color;
 
     if (promising(i, W, vcolor)) {
-        if (i == n) { // leaf node 까지 내려간 경우. 
+        if (i == n) { // 마지막 level 까지 내려간 경우.
             for(int k = 1; k <= n; k++) {
                 cout << vcolor[k] << " ";
             }
@@ -52,6 +52,7 @@ int main() {
         }
     }
     cout << "result" << "\n";
-    m_coloring(0, n, m, W, vcolor); // 시작 정점은 0번이다. 
+    m_coloring(0, n, m, W, vcolor); // 시작 level 은 0이다. 
     return 0;
 }
+
