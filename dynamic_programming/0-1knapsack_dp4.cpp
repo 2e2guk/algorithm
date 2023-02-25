@@ -21,7 +21,7 @@ private:
     vector<vector<int>> _dp;
 
     void _initDPTable(int object_count, int weight_limit) {
-        _dp = vector<vector<int>>(object_count+1, vector<int>(weight_limit+1));
+        _dp = vector<vector<int>>(object_count + 1, vector<int>(weight_limit + 1));
         for (int rowIdx = 0; rowIdx < _dp.size(); rowIdx++) {
             _dp[rowIdx][0] = 0;
         }
@@ -41,12 +41,12 @@ public:
         _initDPTable(obj_endIdx, weight_limit);
 
         for (int rowIdx = 1; rowIdx < _dp.size(); rowIdx++) {
-            for (int colIdx = 1; colIdx < weight_limit+1; colIdx++) {
+            for (int colIdx = 1; colIdx < weight_limit + 1; colIdx++) {
                 int prev_obj_idx = rowIdx - 1;
                 int not_taking_val = _dp[prev_obj_idx][colIdx];
 
-                int weight = _objects[rowIdx-1].weight;
-                int value = _objects[rowIdx-1].value;
+                int weight = _objects[rowIdx - 1].weight;
+                int value = _objects[rowIdx - 1].value;
 
                 int taking_val = 0;
                 int prev_weight_limit = colIdx-weight;
