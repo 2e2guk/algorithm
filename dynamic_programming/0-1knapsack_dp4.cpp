@@ -51,9 +51,10 @@ public:
         _initDPTable(obj_endIdx, weight_limit);
 
         // dp_table[n][W] = max(dp_table[n - 1][W - w[n]] + val[n], dp_table[n - 1][W] + 0) 
-        // 기본적으로, problem/subproblem 으로 쪼갤 때 특정 물건이 포함된다/포함되지 않는다 로 나누어야 한다.
+        // 기본적으로, problem/subproblem 으로 쪼갤 때 "특정 물건이 포함된다/포함되지 않는다" 라는 기준으로 나누어야 한다.
+        // 그러면, 특정 물건을 제외한 opt value를 구해야 하는 것이다. 
         // 전자는 특정 물건이 배낭에 이미 존재하는 경우. 그 경우는, 그 물건을 제외한 opt value에 그 물건의 가치를 더한다. 
-        // 후자는, 특정 물건이 배낭에 존재하지 않는 경우이다. 아예 그 물건이 없는 경우이므로, 물건 목록에서 제외된다. 
+        // 후자는, 특정 물건이 배낭에 존재하지 않는 경우이다. 물건이 없으니 무게 제한도 바뀌지 않는다. 더해지는 물건의 가치도 없다. 
         // 전자와 후자 중 더 큰 값을 취하며 dp table을 완성시켜 나간다. 
         for (int rowIdx = 1; rowIdx < _dp.size(); rowIdx++) {
             for (int colIdx = 1; colIdx < weight_limit + 1; colIdx++) {
