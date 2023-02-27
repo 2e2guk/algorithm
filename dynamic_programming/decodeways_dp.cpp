@@ -53,7 +53,8 @@ int decodingBtmUp(string s) {
             double_count = dp[idx + 2];
         }
         
-        // count값은, idx번째 문자부터 끝까지 해당하는 문자열을 디코딩할 수 있는 방법의 수이다. -  (맨뒤 1개/나머지), (맨뒤 2개/나머지) 로 나누어서 각각의 디코딩 방법의 수를 더해서 완성한다. 
+        // count값은, idx번째 문자부터 끝까지 해당하는 문자열을 디코딩할 수 있는 방법의 수이다. -  (맨뒤 1개/나머지), (맨뒤 2개/나머지) 로 나누어서 각각의 
+        // 디코딩 방법의 수를 더해서 완성한다. 
         int count = single_count + double_count;
         dp[idx] = count;
     }
