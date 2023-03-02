@@ -29,7 +29,7 @@ bool canPartition(vector<int>& nums) {
     // dp(n, s) = dp(n-1, s-nums[n]) || dp(n-1, s)
     for(int rowIdx = 1; rowIdx < dp_table.size(); rowIdx++) {
 
-        // row에 0번째 index로 공집합을 추가했으므로, 진짜 첫 번째 원소를 추출하기 위해선 -1을 해 준다.
+        // rowidx 가 1부터 시작하므로, 첫 번째 원소에 접근하려면 rowidx - 1을 해 준다. 
         int nth_num = nums[rowIdx - 1];
         int prev_row = rowIdx - 1;
 
