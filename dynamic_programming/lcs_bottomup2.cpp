@@ -38,16 +38,23 @@ pair<int, string> longestCommonSubsequence(string text1, string text2) {
         }
     }
     
-    // LCS 문자열을 찾는 과정
+    // LCS 문자열을 찾는 과정 - 마지막 문자열부터, 첫번째 문자열까지 이동한다. 
     int rowIdx = text2.size();
     int colIdx = text1.size();
+    
+    // lcs 문자열 초기화. 
     string lcs_str = "";
     while(rowIdx > 0 && colIdx > 0) {
+        
+        // text1, text2의 마지막 문자열이 서로 같은 경우, lcs에 문자를 추가한다.
         if(text2[rowIdx-1] == text1[colIdx - 1]) {
             lcs_str = text2[rowIdx - 1] + lcs_str;
             rowIdx--;
             colIdx--;
-        } else if(dp_table[rowIdx - 1][colIdx] > dp_table[rowIdx][colIdx - 1]) {
+        } 
+        
+        // 마지막 문자열이 서로 같지 않은 경우, max에 의해 선택되는 쪽의 index를 감소시킨다. 
+        else if(dp_table[rowIdx - 1][colIdx] > dp_table[rowIdx][colIdx - 1]) {
             rowIdx--;
         } else {
             colIdx--;
@@ -65,5 +72,19 @@ int main() {
     cout << result.first << "\n";
     cout << result.second;
     return 0;
-    return 0;
 }
+
+// 41-61까지 설명
+// else if와 else문에서는 lcs에 문자를 추가하는 것이 아닌, 
+// dp_table을 참조하여 lcs 문자열을 찾아가는 과정에서, 다음으로 이동할 위치를 결정하는 것이다.
+// else if(dp_table[rowIdx - 1][colIdx] > dp_table[rowIdx][colIdx - 1]) { ... } 에서, 
+// dp_table[rowIdx - 1][colIdx] > dp_table[rowIdx][colIdx - 1]은, 현재 위치에서 
+// 위쪽 방향에 위치한 값이 왼쪽 방향에 위치한 값보다 크다는 것을 의미한다. 
+// 이 경우, 위쪽 방향에 위치한 값이 현재 위치에서 선택될 가능성이 높다는 것을 의미하므로, 
+// rowIdx값을 감소시켜서 위쪽 방향으로 이동한다.
+// else문에서는 dp_table[rowIdx][colIdx - 1] > dp_table[rowIdx - 1][colIdx] 인 경우, 
+// 현재 위치에서 왼쪽 방향에 위치한 값이 위쪽 방향에 위치한 값보다 크다는 것을 의미한다. 
+// 이 경우, 왼쪽 방향에 위치한 값이 현재 위치에서 선택될 가능성이 높다는 것을 의미하므로, 
+// colIdx값을 감소시켜서 왼쪽 방향으로 이동한다.
+// 따라서, 이러한 과정을 반복하면,
+// 마지막 문자열부터 첫번째 문자열까지 이동하면서, lcs 문자열을 찾아갈 수 있게 된다. 
