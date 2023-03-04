@@ -87,7 +87,7 @@ int main() {
         }
     }
 
-     graph_traversal gt;
+    graph_traversal gt;
     cout << "DFS (Recursive): ";
     gt.dfsMatrix(graph, 0); // DFS (Recursive)
     cout << endl;
