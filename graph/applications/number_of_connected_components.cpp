@@ -46,6 +46,20 @@ int countComponents(int n, vector<vector<int>>& edges) {
 }
 
 int main() {
-    cout << countComponents(6, {{0,1}, {1,2}, {2,0}, {3,4}}) << endl;
-    return 0;
+   int n;
+   cout << "정점의 개수를 입력해 주세요: ";
+   cin >> n;
+   cout << "간선의 개수를 입력해 주세요: ";
+   int m;
+   cin >> m;
+   vector<vector<int>> edges;
+   cout << "간선을 (vertex1 vertex2)의 형태로 입력해 주세요:\n";
+   while (m--)
+   {
+        int x, y;
+        cin >> x >> y;
+        edges.push_back({x, y});
+   }
+   cout << "연결 요소의 개수: " << countComponents(n, edges) << endl;
+   return 0;
 }
