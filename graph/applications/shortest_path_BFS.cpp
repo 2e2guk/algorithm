@@ -50,7 +50,9 @@ public:
             // 탈출 조건. 현재 마지막에 도달한 경우. 
             if (y == this->_rows - 1 && x == this->_cols - 1)
                 return count;
-            vector<pair<int, int>> idx_pairs = {{y - 1, x - 1}, {y - 1, x}, {y - 1, x + 1}, {y, x + 1}, {y + 1, x + 1}, {y + 1, x}, {y + 1, x - 1}, {y, x - 1}};
+            vector<pair<int, int>> idx_pairs = {{y - 1, x - 1}, {y - 1, x}, {y - 1, x + 1},
+            {y, x + 1}, {y + 1, x + 1}, {y + 1, x}, {y + 1, x - 1}, {y, x - 1}};
+            
             idx_pairs = this->filter(idx_pairs);
             for (pair<int, int> idx_pair : idx_pairs)
             {
